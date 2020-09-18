@@ -9,6 +9,7 @@ export default (Component) => {
   const renderWithExpansion = (props, expandRow) => {
     let parentClassName = '';
     let className = '';
+    const transitionTimeout = expandRow.transitionTimeout || 400;
     const key = props.value;
 
     const expanded = _.contains(expandRow.expanded, key);
@@ -39,6 +40,7 @@ export default (Component) => {
         expanded={ expanded }
         onClosed={ () => expandRow.onClosed(key) }
         className={ className }
+        transitionTimeout={ transitionTimeout }
       >
         { expandRow.renderer(props.row, props.rowIndex) }
       </ExpandRow> : null
